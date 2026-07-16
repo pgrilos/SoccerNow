@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Equipas</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+</head>
+<body>
+    <a th:href="@{/web/menu}">
+        <button type="button">Voltar ao Menu</button>
+    </a>
+    <h1>Buscar Equipas</h1>
+    <form method="get" th:action="@{/web/equipas}">
+        <input type="text" name="nome" placeholder="Nome da equipa"/>
+        <input type="number" name="minJogadores" placeholder="Mín. Jogadores"/>
+        <input type="number" name="minVitorias" placeholder="Mín. Vitórias"/>
+        <input type="number" name="minEmpates" placeholder="Mín. Empates"/>
+        <input type="number" name="minDerrotas" placeholder="Mín. Derrotas"/>
+        <input type="number" name="minConquistas" placeholder="Mín. Conquistas"/>
+        <select name="ausenciaPosicao">
+            <option value="">-- Ausência de Posição --</option>
+            <option th:each="p : ${posicoes}" th:value="${p}" th:text="${p}"></option>
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+    <div th:if="${erro}" style="color:red;">
+        <p th:text="${erro}"></p>
+    </div>
+    <table>
+        <tr>
+            <th>Nome da Equipa </th>
+            <th>Jogadores</th>
+            <th>Vitórias</th>
+            <th>Empates</th>
+            <th>Derrotas</th>
+        </tr>
+        <tr th:each="e : ${equipas}">
+            <td th:text="${e.nome}"></td>
+            <td>
+                <span th:each="j : ${e.jogadores}" th:text="${j} + ' '" ></span>
+            </td>
+            <td th:text="${e.vitorias}"></td>
+            <td th:text="${e.empates}"></td>
+            <td th:text="${e.derrotas}"></td>
+        </tr>
+    </table>
+</body>
+</html>

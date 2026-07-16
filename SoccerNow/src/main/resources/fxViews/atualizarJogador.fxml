@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.AtualizarJogadorController"
+      stylesheets="@style.css">
+    <Label text="Atualizar Jogador"/>
+    <TextField fx:id="nomeField" promptText="Nome"/>
+    <TextField fx:id="usernameField" promptText="Username"/>
+    <PasswordField fx:id="passwordField" promptText="Password"/>
+    <ComboBox fx:id="posicaoCombo" promptText="Posição"/>
+    <Button text="Guardar" fx:id="btnGuardar"/>
+    <Button text="Cancelar" fx:id="btnCancelar"/>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

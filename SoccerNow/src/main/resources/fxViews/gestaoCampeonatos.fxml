@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.GestaoCampeonatosController"
+      stylesheets="@style.css">
+    <Label text="Gestão de Campeonatos"/>
+    <HBox spacing="10">
+        <Button text="Adicionar Campeonato" fx:id="btnAdicionarCampeonato"/>
+        <Button text="Atualizar Selecionado" fx:id="btnAtualizarCampeonato"/>
+        <Button text="Remover Selecionado" fx:id="btnRemoverCampeonato"/>
+    </HBox>
+    <TableView fx:id="tableCampeonatos" prefHeight="200" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colNome" text="Nome"/>
+            <TableColumn fx:id="colEquipas" text="Equipas"/>
+        </columns>
+    </TableView>
+    <Button text="Voltar" fx:id="btnVoltar"/>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

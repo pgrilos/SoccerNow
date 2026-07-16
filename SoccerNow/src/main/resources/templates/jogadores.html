@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Jogadores</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+</head>
+<body>
+    <a th:href="@{/web/menu}">
+        <button type="button">Voltar ao Menu</button>
+    </a>
+    <h1>Buscar Jogadores</h1>
+    <form method="get" th:action="@{/web/jogadores}">
+        <input type="text" name="nome" placeholder="Nome do jogador"/>
+        <input type="text" name="posicao" placeholder="Posição"/>
+        <input type="number" name="minGolos" placeholder="Mín. Golos"/>
+        <input type="number" name="minCartoes" placeholder="Mín. Cartões"/>
+        <input type="number" name="minJogos" placeholder="Mín. Jogos"/>
+        <button type="submit">Filtrar</button>
+    </form>
+   <table>
+    <tr>
+        <th>Nome</th>
+        <th>Username</th>
+        <th>Posição</th>
+        <th>Jogos Realizados</th>
+        <th>Golos</th>
+        <th>Cartões Amarelos</th>
+        <th>Cartões Vermelhos</th>
+    </tr>
+    <tr th:each="j : ${jogadores}">
+        <td th:text="${j.nome}"></td>
+        <td th:text="${j.username}"></td>
+        <td th:text="${j.posicao}"></td>
+        <td th:text="${j.numJogos}"></td>
+        <td th:text="${j.numGolos}"></td>
+        <td th:text="${j.numCartoesAmarelos}"></td>
+        <td th:text="${j.numCartoesVermelhos}"></td>
+    </tr>
+</table>
+    <div th:if="${#lists.isEmpty(jogadores)}">
+        <p>Nenhum jogador encontrado.</p>
+    </div>
+</body>
+</html>

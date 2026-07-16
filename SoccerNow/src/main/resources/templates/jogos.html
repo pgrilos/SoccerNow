@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Jogos</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+</head>
+<body>
+    <a th:href="@{/web/menu}">
+        <button type="button">Voltar ao Menu</button>
+    </a>
+    <h1>Buscar Jogos</h1>
+    <form method="get" th:action="@{/web/jogos}">
+    <label>
+        <input type="radio" name="realizados" value="true"
+               th:checked="${realizados == true}" /> Realizados
+    </label>
+    <label>
+        <input type="radio" name="realizados" value="false"
+               th:checked="${realizados == false}" /> A realizar
+    </label>
+    <label>
+        <input type="radio" name="realizados" value=""
+               th:checked="${realizados == null}" /> Todos
+    </label>
+    <input type="number" name="minGolos" placeholder="Mín. Golos"
+           th:value="${minGolos}" />
+    <input type="text" name="rua" placeholder="Rua"
+           th:value="${rua}" />
+    <input type="text" name="cidade" placeholder="Cidade"
+           th:value="${cidade}" />
+    <select name="turno">
+        <option value="" th:selected="${turno == null or turno == ''}">Todos os turnos</option>
+        <option value="manha" th:selected="${turno == 'manha'}">Manhã</option>
+        <option value="tarde" th:selected="${turno == 'tarde'}">Tarde</option>
+        <option value="noite" th:selected="${turno == 'noite'}">Noite</option>
+    </select>
+    <button type="submit">Filtrar</button>
+</form>
+        <table>
+        <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th>Equipa Casa</th>
+            <th>Equipa Visitante</th>
+            <th>Golos Casa</th>
+            <th>Golos Visitante</th>
+            <th>Realizado?</th>
+            <th>Marcadores Casa</th>
+            <th>Marcadores Visitante</th>
+            <th>Cartões Amarelos</th>
+            <th>Cartões Vermelhos</th>
+            <th>Registar Resultado</th>
+        </tr>
+        <tr th:each="j : ${jogos}">
+            <td th:text="${j.data}"></td>
+            <td th:text="${j.hora}"></td>
+            <td th:text="${j.local != null ? j.local.rua : ''}"></td>
+            <td th:text="${j.local != null ? j.local.cidade : ''}"></td>
+            <td th:text="${j.equipaJogoCasa.equipa}"></td>
+            <td th:text="${j.equipaJogoVisitante.equipa}"></td>
+            <td th:text="${j.estatisticas != null ? j.estatisticas.marcadoresEquipaCasa.size() : 0}"></td>
+            <td th:text="${j.estatisticas != null ? j.estatisticas.marcadoresEquipaVisitante.size() : 0}"></td>
+            <td th:text="${j.estatisticas != null ? 'Sim' : 'Não'}"></td>
+            <td>
+                <span th:if="${j.estatisticas != null}" 
+                    th:text="${#strings.arrayJoin(j.estatisticas.marcadoresEquipaCasa, ', ')}"></span>
+            </td>
+            <td>
+                <span th:if="${j.estatisticas != null}" 
+                    th:text="${#strings.arrayJoin(j.estatisticas.marcadoresEquipaVisitante, ', ')}"></span>
+            </td>
+            <td>
+                <span th:if="${j.estatisticas != null and j.estatisticas.cartoes != null}"
+                    th:text="${#strings.arrayJoin(j.estatisticas.cartoes.?[corCartao == 'Amarelo'].![jogador], ', ')}"></span>
+            </td>
+            <td>
+                <span th:if="${j.estatisticas != null and j.estatisticas.cartoes != null}"
+                    th:text="${#strings.arrayJoin(j.estatisticas.cartoes.?[corCartao == 'Vermelho'].![jogador], ', ')}"></span>
+            </td>
+            <td>
+                <span th:if="${j.estatisticas == null}">
+                    <a th:href="@{'/web/resultados/' + ${j.id}}">
+                        <button type="button">Registar Resultado</button>
+                    </a>
+                </span>
+                <span th:if="${j.estatisticas != null}">
+                    <span>Já registado</span>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <div th:if="${#lists.isEmpty(jogos)}">
+        <p>Nenhum jogo encontrado.</p>
+    </div>
+</body>
+</html>

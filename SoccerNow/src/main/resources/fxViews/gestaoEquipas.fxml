@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.GestaoEquipasController"
+      stylesheets="@style.css">
+    <Label text="Gestão de Equipas"/>
+    <HBox spacing="10">
+        <Button text="Adicionar Equipa" fx:id="btnAdicionarEquipa"/>
+        <Button text="Atualizar Selecionada" fx:id="btnAtualizarEquipa"/>
+        <Button text="Remover Selecionada" fx:id="btnRemoverEquipa"/>
+        <Button text="Listar Equipas" fx:id="btnListarEquipas"/>
+    </HBox>
+    <TableView fx:id="tableEquipas" prefHeight="200" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colNome" text="Nome"/>
+            <TableColumn fx:id="colJogadores" text="Jogadores"/>
+        </columns>
+    </TableView>
+    <Button text="Voltar" fx:id="btnVoltar"/>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

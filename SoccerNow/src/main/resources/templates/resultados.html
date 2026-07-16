@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registar Resultado</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+    <script>
+        function adicionarCartao() {
+            const tabela = document.getElementById('tabela-cartoes');
+            const linhas = tabela.querySelectorAll('tr.cartao-row');
+            const idx = linhas.length;
+            const novaLinha = linhas[0].cloneNode(true);
+
+            // Limpa os campos da nova linha
+            novaLinha.querySelectorAll('input, select').forEach(function(el) {
+                if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else el.value = '';
+                // Atualiza o índice dos campos
+                if (el.name) {
+                    el.name = el.name.replace(/\d+/, idx);
+                }
+                if (el.getAttribute('th:field')) {
+                    el.setAttribute('th:field', el.getAttribute('th:field').replace(/\d+/, idx));
+                }
+                if (el.getAttribute('th:name')) {
+                    el.setAttribute('th:name', el.getAttribute('th:name').replace(/\d+/, idx));
+                }
+            });
+            tabela.appendChild(novaLinha);
+        }
+
+        function removerCartao(btn) {
+            const tabela = document.getElementById('tabela-cartoes');
+            const linhas = tabela.querySelectorAll('tr.cartao-row');
+            if (linhas.length > 1) {
+                btn.closest('tr').remove();
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Registar Resultado do Jogo</h1>
+    <form class="resultado-form" th:action="@{'/web/resultados/' + ${jogoId}}" th:object="${estatisticas}" method="post">
+        <label>Marcadores Equipa Casa (usernames separados por vírgula):</label>
+        <input type="text" th:field="*{marcadoresEquipaCasa}" placeholder="ex: joao,paulo" /><br/>
+        <label>Marcadores Equipa Visitante (usernames separados por vírgula):</label>
+        <input type="text" th:field="*{marcadoresEquipaVisitante}" placeholder="ex: rui,ana" /><br/>
+
+        <label>Cartões:</label>
+        <table id="tabela-cartoes">
+            <tr>
+                <th>Cor</th>
+                <th>Jogador (username)</th>
+                <th>Equipa</th>
+                <th>Árbitro (username)</th>
+                <th></th>
+            </tr>
+            <tr th:each="cartao, idx : *{cartoes}" class="cartao-row">
+                <td>
+                    <select th:field="*{cartoes[__${idx.index}__].corCartao}" name="cartoes[__${idx.index}__].corCartao">
+                        <option value="AMARELO">Amarelo</option>
+                        <option value="VERMELHO">Vermelho</option>
+                    </select>
+                </td>
+                <td><input type="text" th:field="*{cartoes[__${idx.index}__].jogador}" name="cartoes[__${idx.index}__].jogador" /></td>
+                <td><input type="text" th:field="*{cartoes[__${idx.index}__].equipa}" name="cartoes[__${idx.index}__].equipa" /></td>
+                <td>
+                    <input type="text" th:name="'cartoes[' + ${idx.index} + '].arbitroUsername'" name="cartoes[__${idx.index}__].arbitroUsername" placeholder="username do árbitro" />
+                </td>
+                <td>
+                    <button type="button" onclick="removerCartao(this)">Remover</button>
+                </td>
+            </tr>
+        </table>
+        <button type="button" onclick="adicionarCartao()">Adicionar Cartão</button>
+        <button type="submit">Guardar Resultado</button>
+        <div th:if="${#fields.hasErrors('*')}" style="color:red;">
+            <ul>
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </form>
+    <div th:if="${mensagem != null}" th:text="${mensagem}"></div>
+    <a th:href="@{/web/jogos}"><button type="button">Voltar à Lista de Jogos</button></a>
+</body>
+</html>

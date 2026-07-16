@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Campeonatos</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+</head>
+<body>
+    <a th:href="@{/web/menu}">
+        <button type="button">Voltar ao Menu</button>
+    </a>
+    <h1>Buscar Campeonatos</h1>
+    <form method="get" th:action="@{/web/campeonatos}">
+        <input type="text" name="nome" placeholder="Nome do campeonato"/>
+        <input type="text" name="equipa" placeholder="Nome de equipa"/>
+        <input type="number" name="realizados" placeholder="Nº jogos realizados"/>
+        <input type="number" name="porRealizar" placeholder="Nº jogos por realizar"/>
+        <button type="submit">Filtrar</button>
+    </form>
+    <table>
+        <tr>
+            <th>Nome do Campeonato</th>
+            <th>Equipas</th>
+            <th>Jogos</th>
+            <th>Classificação</th>
+        </tr>
+        <tr th:each="c : ${campeonatos}">
+            <td th:text="${c.nome}"></td>
+            <td>
+                <span th:each="e : ${c.equipasNomes}" th:text="${e} + ' '"></span>
+            </td>
+            <td th:text="${#lists.size(c.jogos)}"></td>
+            <td>
+                <table th:if="${c.classificacao != null}" border="1">
+                    <tr>
+                        <th>Equipa</th>
+                        <th>Pontos</th>
+                    </tr>
+                    <tr th:each="p : ${c.classificacao}">
+                        <td th:text="${p.equipa}"></td>
+                        <td th:text="${p.pontos}"></td>
+                    </tr>
+                </table>
+                <span th:if="${c.classificacao == null}">-</span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

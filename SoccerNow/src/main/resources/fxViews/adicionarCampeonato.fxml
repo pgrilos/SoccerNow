@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.CheckListView?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.AdicionarCampeonatoController"
+      stylesheets="@style.css">
+    <Label text="Criar Campeonato"/>
+    <TextField fx:id="nomeField" promptText="Nome do campeonato"/>
+    <Label text="Selecione as equipas (mínimo 8)"/>
+    <CheckListView fx:id="equipasCheckListView" prefHeight="150" prefWidth="220"/>
+    <Button text="Criar Campeonato" fx:id="btnCriar"/>
+    <Button text="Voltar" fx:id="btnVoltar"/>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

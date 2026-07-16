@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.GestaoUtilizadoresController"
+          stylesheets="@style.css">
+    <Label text="Gestão de Utilizadores" />
+    <HBox spacing="10">
+        <Button fx:id="btnListarJogadores" text="Listar Jogadores" />
+        <Button fx:id="btnListarArbitros" text="Listar Árbitros" />
+    </HBox>
+    <HBox spacing="10">
+        <Button fx:id="btnAdicionarJogador" text="Adicionar Jogador" />
+        <Button fx:id="btnAdicionarArbitro" text="Adicionar Árbitro" />
+    </HBox>
+    <Label fx:id="labelTabela" text="Jogadores" />
+    <TableView fx:id="tableJogadores" prefHeight="150" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colJogadorNome" text="Nome" />
+            <TableColumn fx:id="colJogadorUsername" text="Username" />
+            <TableColumn fx:id="colJogadorPosicao" text="Posição" />
+        </columns>
+    </TableView>
+    <TableView fx:id="tableArbitros" managed="false" prefHeight="150" prefWidth="600" visible="false">
+        <columns>
+            <TableColumn fx:id="colArbitroNome" text="Nome" />
+            <TableColumn fx:id="colArbitroUsername" text="Username" />
+            <TableColumn fx:id="colArbitroCertificado" text="Certificado" />
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <Button fx:id="btnAtualizar" text="Atualizar Selecionado" />
+        <Button fx:id="btnRemover" text="Remover Selecionado" />
+       <Button fx:id="btnVoltar" text="Voltar" />
+    </HBox>
+    <Label fx:id="mensagemLabel" />
+</VBox>

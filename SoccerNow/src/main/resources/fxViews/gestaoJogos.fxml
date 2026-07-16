@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.GestaoJogosController"
+      stylesheets="@style.css">
+    <Label text="Gestão de Jogos"/>
+    <HBox spacing="10">
+        <Button fx:id="btnAdicionarJogo" text="Adicionar Jogo"/>
+        <Button fx:id="btnRegistarResultado" text="Registar Resultado"/>
+        <Button fx:id="btnRemoverJogoCampeonato" text="Cancelar Jogo Campeonato"/>
+    </HBox>
+    <TableView fx:id="tableJogos" prefHeight="300" prefWidth="800">
+        <columns>
+            <TableColumn fx:id="colData" text="Data"/>
+            <TableColumn fx:id="colHora" text="Hora"/>
+            <TableColumn fx:id="colEquipaCasa" text="Equipa Casa"/>
+            <TableColumn fx:id="colEquipaVisitante" text="Equipa Visitante"/>
+            <TableColumn fx:id="colResultado" text="Resultado"/>
+            <TableColumn fx:id="colCampeonato" text="Campeonato"/>
+            <TableColumn fx:id="colArbitroPrincipal" text="Árbitro Principal"/>
+            <TableColumn fx:id="colArbitros" text="Árbitros"/>
+        </columns>
+    </TableView>
+    <HBox alignment="CENTER" spacing="10">
+        <Button fx:id="btnVoltar" text="Voltar"/>
+    </HBox>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

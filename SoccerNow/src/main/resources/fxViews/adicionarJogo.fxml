@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.CheckListView?>
+
+<VBox alignment="CENTER" prefHeight="750.0" prefWidth="520.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.AdicionarJogoController"
+          stylesheets="@style.css">
+    <Label prefWidth="54.0" text="Criar Jogo" />
+    <TextField fx:id="dataField" promptText="Data (YYYY-MM-DD)" />
+    <TextField fx:id="horaField" promptText="Hora (HH:MM)" />
+    <TextField fx:id="ruaField" promptText="Rua" />
+    <TextField fx:id="cidadeField" promptText="Cidade" />
+    <ComboBox fx:id="equipaCasaCombo" promptText="Equipa Casa" />
+    <ComboBox fx:id="equipaVisitanteCombo" promptText="Equipa Visitante" />
+    <HBox spacing="10" alignment="CENTER">
+        <VBox>
+            <Label text="Jogadores Equipa Casa" />
+            <CheckListView fx:id="checkListJogadoresCasa" prefHeight="230" prefWidth="140" />
+            <Label text="Seleciona até 5" />
+        </VBox>
+        <VBox>
+            <Label text="Jogadores Equipa Visitante" />
+            <CheckListView fx:id="checkListJogadoresVisitante" prefHeight="230" prefWidth="140" />
+            <Label text="Seleciona 5" />
+        </VBox>
+    </HBox>
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Árbitro Principal"/>
+        <ComboBox fx:id="arbitroCombo" promptText="- escolha -" />
+    </HBox>
+    <Label text="Árbitros da Partida" />    
+    <HBox alignment="CENTER" spacing="10">
+        <VBox prefHeight="200">
+            <CheckListView fx:id="checkListArbitros" prefHeight="150" prefWidth="200" />   
+        </VBox>
+    </HBox>    
+     <HBox alignment="CENTER" spacing="10">
+        <Label text="Campeonato"/>
+        <ComboBox fx:id="campeonatoCombo"  promptText="jogo amigável" />
+    </HBox>
+    <Button fx:id="btnCriar" text="Criar Jogo" />
+    <Button fx:id="btnVoltar" text="Voltar" />
+    <Label fx:id="mensagemLabel" />
+</VBox>

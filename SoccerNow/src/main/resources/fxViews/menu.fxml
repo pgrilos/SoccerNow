@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="250.0" spacing="20" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.MenuController"
+          stylesheets="@style.css">
+    <Label style="-fx-font-size: 18px;" text="Menu Principal" />
+    <Button fx:id="btnUtilizadores" text="Gestão de Utilizadores" />
+    <Button fx:id="btnEquipas" text="Gestão de Equipas" />
+    <Button fx:id="btnJogos" text="Gestão de Jogos" />
+    <Button fx:id="btnCampeonatos" text="Gestão de Campeonatos" />
+</VBox>

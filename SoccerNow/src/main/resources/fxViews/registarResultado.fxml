@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.RegistarResultadoController"
+      stylesheets="@style.css">
+    <Label text="Registar Resultado do Jogo"/>
+    <HBox spacing="20" alignment="CENTER">
+        <VBox>
+            <Label text="Golos Equipa Casa"/>
+            <TableView fx:id="tableMarcadoresCasa" prefHeight="180" prefWidth="220" editable="true">
+                <columns>
+                    <TableColumn fx:id="colJogadorCasa" text="Jogador"/>
+                    <TableColumn fx:id="colGolosCasa" text="Golos"/>
+                    <TableColumn fx:id="colCartoesCasa" text="Cartões"/>
+                </columns>
+            </TableView>
+        </VBox>
+        <VBox>
+            <Label text="Golos Equipa Visitante"/>
+            <TableView fx:id="tableMarcadoresVisitante" prefHeight="180" prefWidth="220" editable="true">
+                <columns>
+                    <TableColumn fx:id="colJogadorVisitante" text="Jogador"/>
+                    <TableColumn fx:id="colGolosVisitante" text="Golos"/>
+                    <TableColumn fx:id="colCartoesVisitante" text="Cartões"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </HBox>
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="btnAvancarCartoes" text="Adicionar Cartões"/>
+        <Button fx:id="btnGuardar" text="Guardar Resultado"/>
+        <Button fx:id="btnVoltar" text="Voltar"/>
+    </HBox>
+    <Label fx:id="mensagemLabel"/>
+</VBox>

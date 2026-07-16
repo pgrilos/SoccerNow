@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Menu Principal</title>
+    <link rel="stylesheet" href="/styleWeb.css"/>
+    <style>
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+        .menu-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00b4d8;
+            margin-bottom: 40px;
+            text-shadow: 2px 4px 16px #2228;
+        }
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            width: 320px;
+        }
+        .menu-btn {
+            width: 100%;
+            padding: 18px 0;
+            font-size: 1.25rem;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00b4d8 0%, #4361ee 100%);
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            box-shadow: 0 2px 12px #2225;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            letter-spacing: 1px;
+        }
+        .menu-btn:hover {
+            background: linear-gradient(90deg, #4361ee 0%, #00b4d8 100%);
+            transform: translateY(-3px) scale(1.04);
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-title">SoccerNow</div>
+        <div class="menu-list">
+            <a href="/web/logout">Logout</a>
+            <a th:href="@{/web/jogadores}"><button class="menu-btn">Jogadores</button></a>
+            <a th:href="@{/web/arbitros}"><button class="menu-btn">Árbitros</button></a>
+            <a th:href="@{/web/equipas}"><button class="menu-btn">Equipas</button></a>
+            <a th:href="@{/web/jogos}"><button class="menu-btn">Jogos</button></a>
+            <a th:href="@{/web/campeonatos}"><button class="menu-btn">Campeonatos</button></a>
+        </div>
+    </div>
+</body>
+</html>

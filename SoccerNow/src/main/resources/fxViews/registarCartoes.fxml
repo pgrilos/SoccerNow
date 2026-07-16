@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pt.ul.fc.css.soccernow.javaFX.fxControllers.RegistarCartoesController"
+      stylesheets="@style.css">
+    <Label text="Adicionar Cartões"/>
+    <TableView fx:id="tableCartoes" prefHeight="120" prefWidth="450">
+        <columns>
+            <TableColumn fx:id="colCartaoCor" text="Cor"/>
+            <TableColumn fx:id="colCartaoJogador" text="Jogador"/>
+            <TableColumn fx:id="colCartaoEquipa" text="Equipa"/>
+            <TableColumn fx:id="colCartaoArbitro" text="Árbitro"/>
+        </columns>
+    </TableView>
+    <Button fx:id="btnRemoverCartao" text="Remover Selecionado"/>
+    <HBox spacing="10">
+        <ComboBox fx:id="comboCartaoEquipa" promptText="Equipa"/>
+        <ComboBox fx:id="comboCartaoJogador" promptText="Jogador"/>
+        <ComboBox fx:id="comboCartaoCor" promptText="Cor"/>
+        <Button fx:id="btnAdicionarCartao" text="Adicionar Cartão"/>
+    </HBox>
+    <Button fx:id="btnGuardar" text="Guardar"/>
+    <Button fx:id="btnVoltar" text="Voltar"/>
+    <Label fx:id="mensagemLabel"/>
+</VBox>
